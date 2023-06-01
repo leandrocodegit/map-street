@@ -24,9 +24,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
 })
 
 // Validação formulario bootstrap
-
-(() => {
-  'use strict'
  
   const forms = document.querySelectorAll('.needs-validation')
  
@@ -40,5 +37,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
       form.classList.add('was-validated')
     }, false)
   })
-})()
+ 
+
  
