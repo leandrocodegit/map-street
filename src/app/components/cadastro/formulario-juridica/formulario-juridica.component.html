@@ -1,0 +1,39 @@
+<div class="was-validated formulario">
+<div class="mb-3 mt-3">
+    <div class="mb-3 mt-3">
+        <label for="uname" class="form-label">Seu nome completo</label>
+        <input type="text" class="form-control" id="uname" name="uname" required> 
+        <div class="invalid-feedback">Informe seu nome completo.</div>
+      </div>
+    <label for="uname" class="form-label">Razão social:</label>
+    <input type="text" class="form-control" id="uname" name="uname" required> 
+    <div class="invalid-feedback">Informe a razão social.</div>
+  </div>
+  <div class="mb-3 mt-3">
+    <label for="uname" class="form-label">CNPJ</label>
+    <input type="text" class="form-control" id="uname" name="uname" required> 
+    <div class="invalid-feedback">Informe o cnpj.</div>
+  </div>  
+  <div class="mb-3 mt-3">
+    <label for="uname" class="form-label">Email:</label>
+    <input type="text" class="form-control" id="uname" name="uname" required> 
+    <div class="invalid-feedback">Informe um email válido.</div>
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Senha:</label>
+    <input [ngModel]="senha1" type="password" class="form-control" id="pwd" name="pswd" required> 
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="mb-3">
+    <label for="pwd" class="form-label">Confirmar senha:</label>
+    <input [ngModel]="senha2" type="password" class="form-control" id="pwd" name="pswd" required>
+    <div class="valid-feedback" *ngIf="senha1 == senha2 && senha1.length > 0 && senha2.length > 0">OK.</div>
+    <div class="invalid-feedback">Please fill out this field.</div>
+  </div>
+  <div class="form-check mb-3">
+    <input  class="form-check-input" type="checkbox" id="myCheck"  name="remember" required>
+    <label class="form-check-label" for="myCheck">Aceitar termos.</label>
+    <div class="valid-feedback">Valid.</div> 
+  </div>
+<button type="submit" class="btn btn-primary">Submit</button>
+</div>

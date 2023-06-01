@@ -1,0 +1,116 @@
+
+
+.icon-mobile-bar{
+    color: rgb(139 139 139);
+    font-size: 24px!important;
+    padding: 5px;
+    border: none;
+    background: none
+  }
+
+.mobile-bar{
+   width: 100%;
+   display: none;
+   flex-direction: row; 
+   align-items: center;
+   justify-content: center;
+}
+
+.mobile-bar-logo { 
+    text-align: center;
+}
+
+.mobile-bar-profile { 
+    text-align: right;
+}
+
+.mobile-bar-item { 
+    flex-grow: 1;
+    width: 33%;
+}
+
+.bar-item {
+    width: 100%;
+    display: block;
+    padding: 8px 16px;
+    text-align: left;
+    border: none;
+    white-space: normal;
+    float: none;
+    outline: 0;
+}
+
+.animate-left {
+    position: relative;
+    animation: animateleft 0.4s;
+    animation-duration: 0.4s;
+    animation-timing-function: ease;
+    animation-delay: 0s;
+    animation-iteration-count: 1;
+    animation-direction: normal;
+    animation-fill-mode: none;
+    animation-play-state: running;
+    animation-name: animateleft;
+}
+
+.navbar{
+    box-shadow: 1px 1px 6px #e5e5e5;
+    z-index: 300;
+}
+
+.sidebar { 
+    height: 100%;
+    width: 200px;
+    background-color: #fff;
+    position: fixed!important;
+    z-index: 150;
+    overflow: auto;
+    box-shadow: 1px 1px 6px #e5e5e5; 
+}
+
+.nav-item img, .mobile-bar-item img{
+    width: 80px;
+}
+
+.navbar-nav{
+    align-items: center;
+    
+}
+
+.box-content-bg{
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .img-content{
+        height: 120px;
+        text-align: center;
+}
+    .img-content img{
+            height: 120px;
+    }
+    .bt-link{ 
+        width: 100px;  
+        color: white;
+        padding: 5px;  
+        font-size: 12px;
+    }   
+    h1{
+        font-size: 15px;
+    }
+    .navbar{
+        visibility: hidden; 
+        height: 0;
+    }
+    .nab-mobile{
+        visibility: visible; 
+    }
+    .mobile-bar{ 
+        display: flex;
+    }
+    ul{
+        padding: 25px 8px;
+    }
+
+}
+

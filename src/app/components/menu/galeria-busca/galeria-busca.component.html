@@ -1,0 +1,14 @@
+
+<app-topo></app-topo>
+<div class="box-content-busca-galeria">
+    <app-content-pesquisa [max_width]="'450px'"></app-content-pesquisa>
+    <div class="box-containter-filter-item">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="checked">Avenidas</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Viadutos</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Praças</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Avenidas</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Monumentos</mat-checkbox>
+    </div>
+</div>
+<app-galeria-content [nameButton]="'Ver detalhes'" [viewTooltip]="true"></app-galeria-content>

@@ -1,0 +1,54 @@
+
+<div class="box-container-filter">    
+    <div class="box-containter-filter-item box-containter-filter-item-busca-content">         
+        <app-content-pesquisa></app-content-pesquisa>
+    </div>
+    <hr>
+    <div class="container-item-filter-title"> 
+    <span class="material-symbols-outlined">
+        filter_alt
+        </span>
+    <span>Tipo</span>
+    </div>
+    <div class="box-containter-filter-item">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="checked">Avenidas</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Viadutos</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Praças</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Avenidas</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Monumentos</mat-checkbox>
+    </div>
+    <hr>
+    <div class="container-item-filter-title"> 
+        <span class="material-symbols-outlined">
+            filter_alt
+            </span>
+        <span>Periodo</span>
+        </div>
+    <div class="box-containter-filter-item">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="checked">Diurno</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Noturno</mat-checkbox> 
+    </div>
+    <hr>
+    <div class="container-item-filter-title"> 
+        <span class="material-symbols-outlined">
+            filter_alt
+            </span>
+        <span>Preço</span>
+        </div>   
+    <b class="text-preco-filtro">0 a R${{value}}</b>
+    <div class="box-containter-filter-item">
+        <mat-slider [(ngModel)]="value"
+        thumbLabel
+        [displayWith]="formatLabel"
+        tickInterval="1"
+        step="1"
+        min="1"
+        max="18000"
+        aria-label="units"></mat-slider>         
+    </div>
+    <hr> 
+    <div class="box-containter-filter-item"> 
+        <button (click)="aplicar()" class="box-containter-filter-item__aplicar">Aplicar filtros</button> 
+    </div>
+</div>

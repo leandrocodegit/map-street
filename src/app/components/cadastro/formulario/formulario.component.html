@@ -1,0 +1,10 @@
+<app-topo></app-topo>
+<div class="container mt-3"> 
+    <mat-radio-group [(ngModel)]="tipoCastro" aria-label="Select an option">
+        <mat-radio-button (change)="verificaTipoFormulario()" value="fisica">Pessoa fisíca</mat-radio-button>
+        <mat-radio-button (change)="verificaTipoFormulario()" value="juridica">Pessoa jurídica</mat-radio-button>
+      </mat-radio-group>
+    
+      <app-formulario-fisica *ngIf="tipoCastro === 'fisica'"></app-formulario-fisica>
+      <app-formulario-juridica *ngIf="tipoCastro === 'juridica'"></app-formulario-juridica>
+  </div>

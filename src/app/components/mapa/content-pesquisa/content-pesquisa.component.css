@@ -1,0 +1,48 @@
+.box-containter-filter-item-busca-content{
+    display: flex;  
+    flex-direction: row;  
+    justify-content: center;  
+}
+
+.box-containter-filter-item-busca-content button{
+    margin-left: 5px;
+    float: right;    
+    border-radius: 12px;
+    border: none;
+    background: #45dbcaf0;
+    color: white; 
+    padding-right: 16px;
+    padding-left: 19px;
+    
+}
+
+.box-containter-filter-item-busca-content input{
+    padding: 8px; 
+    margin-left: 2px;  
+    width: 100%;  
+    border-radius: 12px;
+    background: #ffffffde;
+    border: none;
+    outline-color: #8745dbab;
+    outline-style: solid 0.5em;
+}
+
+.box-containter-filter-item__search, .box-containter-filter-item__aplicar{
+    border-radius: 5px;
+    border-color: #aeaeae;
+    border-style: solid;
+    border-width: thin; 
+    height: 40px; 
+    margin-top: 5px;
+        
+} 
+
+@media (min-width: 600px) {
+    .box-containter-filter-item-busca-content input{
+        border: solid rgb(201, 201, 201);
+        border-width: 0.05rem;
+        
+    }  
+}
+
+

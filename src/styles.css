@@ -1,0 +1,220 @@
+ 
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+Chorasmian&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@700&family=Noto+Sans+Chorasmian&display=swap');
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.leaflet-popup {
+    top: -276px !important;
+    left: -224px  !important;
+    bottom: 37px !important;
+    width: 456px;
+
+}
+
+.leaflet-container a.leaflet-popup-close-button {
+    padding: 11px 34px 0 0 !important;
+    font-size: 26px !important;
+    ;
+}
+
+.leaflet-popup-content-wrapper,
+.leaflet-popup-tip {
+    height: 80%;
+}
+
+.leaflet-popup-content p {
+    margin: 0 0 !important;
+}
+
+.container-poupup {
+    width: 428px;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center; 
+}
+ 
+.container-item {
+    flex-grow: 1;
+    padding: 5px;
+    box-sizing: border-box;
+}
+
+.container-item img {
+    width: 100%;
+    text-align: center;
+    border-radius: 5px;
+}
+
+.container-item-title {
+    height: 70px;
+}
+
+.container-item p {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    color: #4c4c4c;
+}
+
+.container-item h2 {
+    top: -108px;
+    font-size: 26px;
+    margin: -7px 0 -3px -3px;
+    color: #484848;
+}
+
+.container-item-title span {
+    font-size: 16px;
+    color: #3dd5d1;
+}
+
+.container-item hr {
+    border: solid;
+    color: #cbbce2;
+    margin-top: 10px;
+}
+
+path {
+    stroke-width: 0.5;
+    fill-opacity: 0.4;
+}
+
+.map-container { 
+    left: 0;
+    right: 0;
+    bottom: 0;
+    margin: 0;
+    z-index: 1;
+}
+
+
+.mat-checkbox-frame {
+    border-radius: 0;
+}
+
+.mat-checkbox-layout .mat-checkbox-label {
+    line-height: 24px;
+    font-family: 'Roboto';
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.box-content-title-top{
+    padding: 50px 30px;
+    font-size: 50px;
+    font-weight: bold;
+    color: #3a3a3a;
+    text-align: center;
+}
+
+.box-content-title-top span{
+    color: #ffd400eb;
+}
+
+.box-content-top-descricao{
+    display: flex;
+    flex-wrap: wrap; 
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.box-content-top-descricao img{
+    width: 100px;
+}
+
+.box-content-top-descricao button{
+    padding: 20px 40px;
+    border: none;
+    background: salmon;
+    color: white;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.box-content-top-descricao button:hover{ 
+    background: rgb(114, 150, 250); 
+}
+
+.formulario input{
+    max-width: 450px;
+} 
+
+.formulario button{
+    width: 100%;
+    max-width: 350px;
+    margin: auto;
+}
+
+.formulario .form-control.is-invalid, .was-validated .form-control:invalid {
+    border-color: #f5a0a9!important;
+}
+
+.formulario label{ 
+    font-weight: bold;
+}
+
+@media (max-width: 600px) {
+    .container-poupup {
+        width: 300px; 
+    }
+
+    .leaflet-popup {
+        top: -274px !important;
+        left: -165px !important;
+        bottom: 5px !important;
+        width: 339px;
+    }
+
+    .container-item p {
+        font-size: 14px;
+    }
+
+    .leaflet-container a.leaflet-popup-close-button {
+        padding: 10px 30px 0 0 !important;
+        font-size: 33px !important;
+        ;
+    }
+
+    .container-item h2 {
+        font-size: 21px;
+        margin: 1px 0 -3px -3px;
+    }
+
+    .container-item hr {
+        font-size: 21px;
+        margin: 0;
+    }
+ 
+    .container-item {
+        padding: 3px;
+    }
+
+    .leaflet-popup-content-wrapper,
+    .leaflet-popup-tip {
+        height: 70%;
+    }
+
+    .box-content-title-top{
+        font-size: 24px;
+    }
+      
+    .box-content-top-descricao button{
+        padding: 15px 30px;
+        margin-bottom: 10px;
+    }
+
+    
+}

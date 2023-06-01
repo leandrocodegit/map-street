@@ -1,0 +1,39 @@
+<div class="box-container-filter">
+
+    <hr>
+    <span>Filtrar por tipo</span>
+    <div class="box-containter-filter-item">
+        <mat-checkbox class="example-margin" color="primary" [(ngModel)]="checked">Avenidas</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+        <mat-checkbox class="example-margin" [(ngModel)]="checked">Tuneis</mat-checkbox>
+    </div>
+    <hr>
+    <span>Filtrar preço</span>
+    <div class="box-containter-filter-item">
+        <mat-slider
+        class="example-margin" 
+        max="180000"
+        min="1000"
+        step="1" >
+      <input matSliderThumb >
+    </mat-slider>
+        <p  >0 a R$value</p>
+    </div>
+    <hr>
+    <span>Pesquisar no mapa</span>
+    <div class="box-containter-filter-item">
+
+        <input type="text">
+        <button>Buscar</button>
+    </div>
+
+</div>
+
+<div class="map-container">
+    <div class="map-frame">
+        <div id="map"></div>
+    </div>
+</div>

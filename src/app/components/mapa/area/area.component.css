@@ -1,0 +1,22 @@
+
+.box-container-content-filter{
+    width: 250px;
+    position: absolute;
+    z-index: 99;
+    display: flex; 
+    flex-direction: column; 
+    background: white;
+    top: 150px;
+    left: 14px;
+    border-radius: 5px;
+    box-shadow: 1px 1px 6px #8b8b8b;
+    padding: 10px;    
+}
+
+@media (max-width: 600px) {
+    .box-container-content-filter{
+        display: none;   
+    }
+}
+
+ 

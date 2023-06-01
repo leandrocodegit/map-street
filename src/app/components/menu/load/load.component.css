@@ -1,0 +1,28 @@
+ .load-content{
+    color:  salmon;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.350);
+    z-index: 200;
+    text-align: center;
+ }
+ 
+.material-symbols-outlined {
+    font-size: 42px;
+    animation: efeito-mover 1s infinite;
+}
+
+@keyframes efeito-mover {
+    from {
+        transform: rotateX(180deg);
+    }
+
+    to {
+        transform: rotateX(0);
+    }
+}

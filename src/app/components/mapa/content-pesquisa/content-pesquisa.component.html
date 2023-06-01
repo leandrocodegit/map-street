@@ -1,0 +1,13 @@
+<div [style.max-width]="max_width" class="box-containter-filter-item-busca-content">      
+        <input type="text"
+               placeholder="Faça uma pesquisa"
+               [formControl]="control"
+               [matAutocomplete]="auto"
+               class="box-containter-filter-item__search">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let street of filteredStreets | async" [value]="street">
+            {{street}}
+          </mat-option>
+        </mat-autocomplete> 
+    <button class="box-containter-filter-item__search">Buscar</button> 
+</div>

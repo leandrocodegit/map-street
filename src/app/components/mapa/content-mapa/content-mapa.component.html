@@ -1,0 +1,6 @@
+<app-load *ngIf="!iSInitMap"></app-load>
+<div [style.position]="position" [style.top]="top" [class.disableZoon]="disableZoon" class="map-container">
+    <div [style.height]="height_frame" class="map-frame">
+        <div [style.height]="height_map" id="map"></div>
+    </div>
+</div>
