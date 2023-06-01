@@ -41,8 +41,4 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     }, false)
   })
 })()
-
-
-// Volume tag video banner
-
-document.getElementById("videoBanner").volume = 0;
+ 
