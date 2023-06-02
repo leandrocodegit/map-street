@@ -1,3 +1,4 @@
+ 
 // Sidebar mobile open
 
 function openLeftMenu() {
@@ -5,8 +6,7 @@ function openLeftMenu() {
 }
 
 function closeLeftMenu() {  
-  document.getElementById("leftMenu").style.display = "none";
-  document.getElementById("leftMenu").animate("animaCloseSideBar");
+  document.getElementById("leftMenu").style.display = "none"; 
 }
 
  
@@ -33,5 +33,6 @@ var tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
     }, false)
   })
  
+  
 
  
