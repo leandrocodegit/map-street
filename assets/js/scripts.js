@@ -4,8 +4,9 @@ function openLeftMenu() {
   document.getElementById("leftMenu").style.display = "flex";
 }
 
-function closeLeftMenu() {
+function closeLeftMenu() {  
   document.getElementById("leftMenu").style.display = "none";
+  document.getElementById("leftMenu").animate("animaCloseSideBar");
 }
 
  
