@@ -11,7 +11,9 @@ AS
 BEGIN
 /*==============================================================================================================================================
 -- ESTA PROCEDURE É UTILIZADO DO TIBCO 'TIB_SEGUROS'
--- PROCEDUR QUE SELECIONAS AS APOLICES GERADAS NOS ULTIMOS SETE DIAS CORRIDOS
+-- PROCEDURE QUE SELECIONAS AS APOLICES GERADAS NOS ULTIMOS SETE DIAS CORRIDOS
+
+   V3.0	  23/06/2023  Wang						Adicionado NROCONTRATO para o Projeto Corretora Toyota/Quiver
 ================================================================================================================================================*/
 	SET NOCOUNT ON
 	
@@ -80,7 +82,8 @@ BEGIN
 	SELECT  S.IDCOTACAO, 
 			S.IDCONTRATO,
 			S.NROPROPOSTA,
-			SEG.COD_SEGURADORA 
+			SEG.COD_SEGURADORA,
+			O.NROCONTRATO 
 	FROM AB_BATIVOS..PROPOSTA_COTACAO_SEGURO S (NOLOCK) 
 	INNER JOIN AB_OPEVAREJO..OPERACOES O (NOLOCK) 
 		ON S.NROPROPOSTA = O.NROPROPOSTA 
