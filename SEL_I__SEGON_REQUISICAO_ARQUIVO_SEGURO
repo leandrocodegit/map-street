@@ -1,0 +1,93 @@
+USE IT3020_INTEGRACAO 
+GO
+IF EXISTS (SELECT * FROM SYSOBJECTS SO WHERE SO.name = 'SEL_I__SEGON_REQUISICAO_ARQUIVO_SEGURO' AND SO.type = 'P')
+	BEGIN
+		DROP PROC dbo.SEL_I__SEGON_REQUISICAO_ARQUIVO_SEGURO
+	END
+GO
+-- EXEC dbo.SEL_I__SEGON_REQUISICAO_ARQUIVO_SEGURO '20180118','20180119','33016221000107,MITSUI#60831344000174,TOKIO' 
+CREATE PROCEDURE dbo.SEL_I__SEGON_REQUISICAO_ARQUIVO_SEGURO(@DT_INICIO VARCHAR(10),@DT_FIM VARCHAR(10),@LST_SEGURADORAS VARCHAR(MAX) = '')
+AS
+BEGIN
+/*==============================================================================================================================================
+-- ESTA PROCEDURE É UTILIZADO DO TIBCO 'TIB_SEGUROS'
+-- PROCEDUR QUE SELECIONAS AS APOLICES GERADAS NOS ULTIMOS SETE DIAS CORRIDOS
+================================================================================================================================================*/
+	SET NOCOUNT ON
+	
+	--=======================================================================
+	/* INICIO
+	ESTE TECHO É APENAS PARA EFETUAR O SPLIT NO CNPJ/CODSEGURADORA
+	ONDE VAI SER MONTADO UMA TABELA TEMPORARIA PARA JUNTAR AO SELECT FINAL
+	*/
+	--=======================================================================
+	
+	DECLARE @separadorColuna AS CHAR(1) = ','
+	DECLARE @separadorRegistro AS CHAR(1) = '#'
+	DECLARE @lista VARCHAR(MAX)
+	DECLARE @inicio INT
+	DECLARE @fim INT
+	DECLARE @item1 VARCHAR(MAX)
+	DECLARE @item2 VARCHAR(MAX)
+
+	CREATE TABLE #SEGURADORAS (CNPJ VARCHAR(20),COD_SEGURADORA VARCHAR(20)) 
+
+	SET @lista = @LST_SEGURADORAS
+	SET @inicio = 1
+	SET @fim = 1
+
+
+	IF RIGHT (@lista, LEN(@separadorRegistro)) <> @separadorRegistro
+		SET @lista = @lista + @separadorRegistro
+	            
+	WHILE (@inicio <= LEN(@lista) AND LEN(@lista) > 1)
+	BEGIN
+		SET @fim = RTRIM (LTRIM (CHARINDEX (@separadorRegistro, @lista, @inicio)))
+	    
+		IF @fim = 0
+		  SET @item1 = SUBSTRING (@lista, @inicio, LEN(@lista) - @inicio + 1)
+	      
+		IF @fim <> 0
+		  BEGIN
+			  SET @item1 = SUBSTRING (@lista, @inicio, @fim - @inicio)
+			  SET @item2 = SUBSTRING (@item1, CHARINDEX(@separadorColuna,@item1,1)+1, @fim - CHARINDEX(@separadorColuna,@item1,1))
+			  SET @item1 = REPLACE(@item1,@separadorColuna + @item2,'')
+			  SET @inicio = @fim + 1 + LEN(@separadorRegistro) - 1
+		  END
+	      
+		INSERT INTO #SEGURADORAS
+		VALUES      (@item1,@item2)
+	END
+	
+	--=======================================================================
+	-- FIM - DO SPLIT NO CNPJ/CODSEGURADORA
+	--=======================================================================
+	
+	
+	DECLARE @DATA_INICIO DATE
+	DECLARE @DATA_FIM DATE
+	
+	-- NORMALMENTE SERA CONSULTA OS ULTIMOS 7 DIAS, POREM DEIXAR A POSSIBILIDADE DE CONSULTAR OUTROS PERIODOS CASO NECESSARIO
+	IF LTRIM(ISNULL(@DT_INICIO,'')) = '' AND LTRIM(ISNULL(@DT_FIM,'')) = ''
+		BEGIN
+			SELECT @DATA_INICIO = DATEADD(DAY,-7,GETDATE()), @DATA_FIM = DATEADD(DAY,-1,GETDATE())
+		END
+	ELSE
+		BEGIN	
+			SELECT @DATA_INICIO = @DT_INICIO, @DATA_FIM = @DT_FIM
+		END
+	
+	SELECT  S.IDCOTACAO, 
+			S.IDCONTRATO,
+			S.NROPROPOSTA,
+			SEG.COD_SEGURADORA 
+	FROM AB_BATIVOS..PROPOSTA_COTACAO_SEGURO S (NOLOCK) 
+	INNER JOIN AB_OPEVAREJO..OPERACOES O (NOLOCK) 
+		ON S.NROPROPOSTA = O.NROPROPOSTA 
+	INNER JOIN #SEGURADORAS SEG
+		ON RTRIM(LTRIM(REPLACE(REPLACE(REPLACE(S.CNPJSEGURADORA,'.',''),'-',''),'/',''))) = SEG.CNPJ
+	WHERE LTRIM(S.IDCONTRATO) != ''
+	AND O.DATINICIO >= @DATA_INICIO
+	AND O.DATINICIO <= @DATA_FIM
+	--AND O.DATINICIO >= '20170601'
+END
