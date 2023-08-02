@@ -1,13 +1,8 @@
-USE [IT3020_INTEGRACAO]
-GO
-/****** Object:  StoredProcedure [dbo].[SEL_DADOS_REQUISICAO_SEGURO]    Script Date: 27/07/2023 14:09:46 ******/
-SET ANSI_NULLS ON
-GO
-SET QUOTED_IDENTIFIER ON
+USE IT3020_INTEGRACAO 
 GO
 
 
-ALTER   PROCEDURE [dbo].[SEL_DADOS_REQUISICAO_SEGURO](@IdCotacao VARCHAR(15), @IdContrato  VARCHAR(15), @NumProposta INT)
+CREATE OR ALTER PROCEDURE dbo.SEL_DADOS_REQUISICAO_SEGURO(@IdCotacao VARCHAR(15), @IdContrato  VARCHAR(15), @NumProposta INT)
 AS
 BEGIN
 /*
@@ -24,6 +19,11 @@ BEGIN
    V1.0	  26/06/2023  Wang						  Versao Inicial 
    
 ==============================================================================================
+--DECLARE @IdCotacao VARCHAR(15), @IdContrato  VARCHAR(15), @NumProposta INT
+
+--SET @IdCotacao = '013156493152'
+--SET @IdContrato = '01313202987'
+--SET @NumProposta = 17036
 */
 
 	SET NOCOUNT ON 
@@ -150,25 +150,19 @@ BEGIN
 		   ,PERC_IOF = CONVERT(NUMERIC(7,5), S.VLRIOFCOTACAO / S.VLRLIQCOTACAO)
 		   ,S.VLRTOTALCOTACAO AS VLR_PREMIO_TOTAL
 		   ,S.ANOFABRICACAO
-		   ,S.ANOMODELO 
-		   ,S.ZEROKM  
+		   ,S.ANOMODELO
+		   ,S.ZEROKM
 		   ,B.PLACA
 		   ,B.UFPLACA
 		   ,B.CHASSI
-		   ,B.COR
-		   ,B.COMBUSTIV 
-		   ,B.RENAVAN 
-		   
 		   ,'Automóvel individual'  AS RAMO
 		   ,ISNULL(PS.NOME,'')  AS DESC_SEGURADORA   
 		   -- DADOS DO FINANCIAMENTO
 		   ,P.QTDPARCELAS
-		   ,P.DATVENCTO
-		   ,P.DATPRIMVENCTO 
 		   ,P.VLRFINANCIADO
 		   ,P.VLRPRINCIPAL
-		   ,P.VLRENTRADA 
-		   ,P.VLRPARCELA 
+		   ,P.VLRENTRADA
+		   ,P.VLRPARCELA
 		   --,CONVERT(CHAR(10),CON.DAT_CONT,126) AS DATA_VENDA
 	       --,CONVERT(CHAR(10),DATEADDNI) AS DIA_VCTO_PARCELAS  --Dia vencimento parcelas
 	FROM AB_BATIVOS..PROPOSTA_COTACAO_SEGURO S (NOLOCK) 
@@ -191,3 +185,5 @@ BEGIN
 
 
 END
+GO
+GRANT EXECUTE ON SEL_DADOS_REQUISICAO_SEGURO TO USERS_SYS 
